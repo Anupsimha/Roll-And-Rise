@@ -16,14 +16,47 @@ public class Board {
         snakeMap = new HashMap<>();
         ladderMap = new HashMap<>();
 
-        // hardcoded for demo; you can make them random
-        snakes.add(new Snake(97, 78));
-        snakes.add(new Snake(62, 19));
-        ladders.add(new Ladder(4, 56));
-        ladders.add(new Ladder(23, 89));
 
-        for (Snake s : snakes) snakeMap.put(s.start, s.end);
-        for (Ladder l : ladders) ladderMap.put(l.start, l.end);
+        Random rand = new Random();
+        Set<Integer> usedPositions = new HashSet<>();
+        
+        int maxPos = size * size;
+        
+        // Random number of snakes and ladders between 4 and 5
+        int numSnakes = rand.nextInt(2) + 4;  // 4 or 5
+        int numLadders = rand.nextInt(2) + 4; // 4 or 5
+        
+        // Generate snakes
+        while (snakes.size() < numSnakes) {
+            int start = rand.nextInt(maxPos - 1) + 2; // start from 2 to maxPos
+            int end = rand.nextInt(start - 1) + 1;    // end from 1 to start-1
+        
+            if (start == end || usedPositions.contains(start) || usedPositions.contains(end)) {
+                continue;
+            }
+        
+            snakes.add(new Snake(start, end));
+            snakeMap.put(start, end);
+            usedPositions.add(start);
+            usedPositions.add(end);
+        }
+        
+        // Generate ladders
+        while (ladders.size() < numLadders) {
+            int start = rand.nextInt(maxPos - 2) + 1;      // start from 1 to maxPos - 2
+            int end = rand.nextInt(maxPos - start) + start + 1; // end from start+1 to maxPos
+        
+            if (start == end || usedPositions.contains(start) || usedPositions.contains(end)) {
+                continue;
+            }
+        
+            ladders.add(new Ladder(start, end));
+            ladderMap.put(start, end);
+            usedPositions.add(start);
+            usedPositions.add(end);
+        }
+        
+
     }
 
     public int checkPosition(int pos) {
