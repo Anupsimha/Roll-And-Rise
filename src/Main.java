@@ -1,9 +1,8 @@
-import java.util.*;
+import controller.GameController;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("\n\t\t\tRoll And Rise : Snake and Ladder Game\n");
-        Game game = new Game();
-        game.start();
+        GameController controller = new GameController();
+        controller.launch();
     }
 }

@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Random;
 
 public class Dice {
@@ -6,3 +8,4 @@ public class Dice {
         return rand.nextInt(6) + 1;
     }
 }
+

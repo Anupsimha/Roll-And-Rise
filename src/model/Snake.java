@@ -1,6 +1,8 @@
+package model;
+
 public class Snake {
-    int start;
-    int end;
+    public final int start;
+    public final int end;
 
     public Snake(int start, int end) {
         this.start = start;

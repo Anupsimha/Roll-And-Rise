@@ -1,12 +1,14 @@
+package model;
+
 import java.util.*;
 
 public class Board {
-    int size;
-    TreeNode root;
-    List<Snake> snakes;
-    List<Ladder> ladders;
-    Map<Integer, Integer> snakeMap;
-    Map<Integer, Integer> ladderMap;
+    private final int size;
+    private final TreeNode root;
+    private final List<Snake> snakes;
+    private final List<Ladder> ladders;
+    private final Map<Integer, Integer> snakeMap;
+    private final Map<Integer, Integer> ladderMap;
 
     public Board(int size) {
         this.size = size;
@@ -16,7 +18,6 @@ public class Board {
         snakeMap = new HashMap<>();
         ladderMap = new HashMap<>();
 
-        // hardcoded for demo; you can make them random
         snakes.add(new Snake(97, 78));
         snakes.add(new Snake(62, 19));
         ladders.add(new Ladder(4, 56));
@@ -30,6 +31,18 @@ public class Board {
         if (snakeMap.containsKey(pos)) return snakeMap.get(pos);
         if (ladderMap.containsKey(pos)) return ladderMap.get(pos);
         return pos;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public List<Snake> getSnakes() {
+        return snakes;
+    }
+
+    public List<Ladder> getLadders() {
+        return ladders;
     }
 
     public void printBoard() {

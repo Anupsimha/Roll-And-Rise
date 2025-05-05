@@ -1,13 +1,15 @@
-class TreeNode {
+package model;
+
+public class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
 
-    TreeNode(int val) {
+    public TreeNode(int val) {
         this.val = val;
     }
 
-    static TreeNode createTree(int start, int end) {
+    public static TreeNode createTree(int start, int end) {
         if (start > end) return null;
         int mid = (start + end) / 2;
         TreeNode root = new TreeNode(mid);
@@ -16,4 +18,3 @@ class TreeNode {
         return root;
     }
 }
-

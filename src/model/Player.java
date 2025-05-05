@@ -1,5 +1,7 @@
+package model;
+
 public class Player {
-    private String name;
+    private final String name;
     private int position;
 
     public Player(String name) {
@@ -18,6 +20,5 @@ public class Player {
     public void move(int steps, Board board) {
         position += steps;
         position = board.checkPosition(position);
-        System.out.println(name + " moved to position: " + position);
     }
 }
